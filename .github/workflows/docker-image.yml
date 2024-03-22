@@ -14,13 +14,12 @@ jobs:
 
     steps:
     - name: Checkout Project
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - name: Login docker hub
       run: | 
-        echo "login docker..."
-        docker login -u ${secrets.DOCKER_USER} -p ${DOCKER_PASSWORD}
-        
-    
+        docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }} &&
+        echo "logged..."
+       
     # - name: Build the Docker image
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
